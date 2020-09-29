@@ -6,7 +6,13 @@ type LocalSpike struct {
 }
 
 //本地扣库存,返回bool值
-func (spike *LocalSpike) LocalDeductionStock() bool{
+func (spike *LocalSpike) LocalDeductionStock() bool {
 	spike.LocalSalesVolume = spike.LocalSalesVolume + 1
 	return spike.LocalSalesVolume <= spike.LocalInStock
+}
+
+//本地扣库存回滚
+func (spike *LocalSpike) LocalRollBackDeductionStock() bool {
+	spike.LocalSalesVolume = spike.LocalSalesVolume - 1
+	return true
 }
